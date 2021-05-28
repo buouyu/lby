@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>李博雨&&陆倩</title>
+    <title>李博雨❤陆倩</title>
 
     <link rel="stylesheet" href="img/CSS.css?v=3">
 
@@ -156,12 +156,93 @@
             }
         }
     </style>
+    <style>
+      .timer{
+        height: 40vw;
+        width: 80vw;
+        /* border: 3px solid #000; */
+        position: fixed;
+        bottom: 15vw;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 7vw;
+        color: #fff;
+        text-shadow: 0 0 10px yellow,
+        0 0 12px blue,
+        0 0 14px red,
+        0 0 16px olive,
+        0 0 18px beige;
+        opacity: 0.7;
+      }
+      .timer .writen{
+        position: absolute;
+        left: 50%;
+        white-space: nowrap;
+        transform: translateX(-50%);
+      }
+      .timer #momk{
+        position: absolute;
+        left: 50%;
+        top: 8vw;
+        white-space: nowrap;
+        transform: translateX(-50%);
+      }
+      .timer .writen2{
+        position: absolute;
+        left: 50%;
+        top: 16vw;
+        white-space: nowrap;
+        transform: translateX(-50%);
+      }
+      .timer .writen3{
+        position: absolute;
+        left: 50%;
+        white-space: nowrap;
+        top: 24vw;
+        transform: translateX(-50%);
+      }
+    </style>
 </head>
 
 <body>
   <!-- <embed
   height="0" weith="0" src="./img/love.mp3" id="player">
 </embed> -->
+    <div class="timer">
+      <div class="writen">我们已认识</div>
+      <div id="momk"></div>
+      <div class="writen2">今后</div>
+      <div class="writen3">我们永不分离</div>
+    </div>
+
+    <script type="text/javascript">
+      function NewDate(str) {
+      str = str.split('-');
+      var date = new Date();
+      date.setUTCFullYear(str[0], str[1] - 1, str[2]);
+      date.setUTCHours(0, 0, 0, 0);
+      return date;
+      }
+      function momxc() {
+      var birthDay =NewDate("2021-5-18");
+      var today=new Date();
+      var timeold=today.getTime()-birthDay.getTime();
+      var sectimeold=timeold/1000
+      var secondsold=Math.floor(sectimeold);
+      var msPerDay=24*60*60*1000; var e_daysold=timeold/msPerDay;
+      var daysold=Math.floor(e_daysold);
+      var e_hrsold=(daysold-e_daysold)*-24;
+      var hrsold=Math.floor(e_hrsold);
+      var e_minsold=(hrsold-e_hrsold)*-60;
+      var minsold=Math.floor((hrsold-e_hrsold)*-60); var seconds=Math.floor((minsold-e_minsold)*-60).toString();
+      document.getElementById("momk").innerHTML = daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+      setTimeout(momxc, 1000);
+      }momxc();
+      </script>
+
+
+
+
     <audio id="player" src="img/love.mp3" loop="loop" hidden="true" autoplay="autoplay"></audio>
     <canvas id="c" style="position: absolute;z-index: -1;text-align: center;height:100vh;top:0;left:0;width:100%"></canvas>
     <img onClick="playMusic(this)" class="music musicRotate" src="img/musicP.png">
