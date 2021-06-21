@@ -127,75 +127,97 @@
       let flag = false;
       if (window.navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)) {
         document.body.ontouchstart = function (e) {
-        if (e.target == document.getElementById('bt_start').children[0]) {
-          flag = true;
-        }
-        // console.log(e)
-        const canvas = document.getElementsByTagName('canvas')[0];
-        if ((flag == true || resize) && e.target == canvas) {
-          const rect = document.createElement('div');
-          const touch = e.targetTouches[0];
-          const top = Math.floor(touch.clientY / rectHeight) * rectHeight;
-          const left = Math.floor(touch.clientX / rectWith) * rectWith;
-          rect.className = 'myTest';
-          rect.innerHTML = letterArr[random(0, letterArr.length)]
-          const style = rect.style;
-          style.width = rectWith + 'px';
-          style.height = 0 + 'px';
-          // console.log(touch.clientX,touch.clientY)
-          style.top = top + 'px';
-          style.left = left + 'px';
-          style.lineHeight = rectHeight + 'px';
-          style.color = `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`
-          document.body.appendChild(rect)
-          rect.onclick = () => {
-            document.body.removeChild(rect);
-            // canvas.click()
+          if (e.target == document.getElementById('bt_start').children[0]) {
+            flag = true;
           }
-          // console.log('aaa')
-          // console.log('su')
-          setTimeout(() => {
-            document.body.removeChild(rect);
-          }, 48)
-
+          // console.log(e)
+          const canvas = document.getElementsByTagName('canvas')[0];
+          if ((flag == true || resize) && e.target == canvas) {
+            if (e.targetTouches.length == 1) {
+              const rect = document.createElement('div');
+              const touch = e.targetTouches[0];
+              const top = Math.floor(touch.clientY / rectHeight) * rectHeight;
+              const left = Math.floor(touch.clientX / rectWith) * rectWith;
+              rect.className = 'myTest';
+              rect.innerHTML = letterArr[random(0, letterArr.length)]
+              const style = rect.style;
+              style.width = rectWith + 'px';
+              style.height = 0 + 'px';
+              // console.log(touch.clientX,touch.clientY)
+              style.top = top + 'px';
+              style.left = left + 'px';
+              style.lineHeight = rectHeight + 'px';
+              style.color = `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`
+              document.body.appendChild(rect)
+              rect.onclick = () => {
+                document.body.removeChild(rect);
+              }
+              setTimeout(() => {
+                document.body.removeChild(rect);
+              }, 48)
+            } else {
+              for (let i = 0; i < e.targetTouches.length; i++) {
+                const rect = document.createElement('div');
+                const touch = e.targetTouches[i];
+                const top = Math.floor(touch.clientY / rectHeight) * rectHeight;
+                const left = Math.floor(touch.clientX / rectWith) * rectWith;
+                rect.className = 'myTest';
+                rect.innerHTML = letterArr[random(0, letterArr.length)]
+                const style = rect.style;
+                style.width = rectWith + 'px';
+                style.height = 0 + 'px';
+                // console.log(touch.clientX,touch.clientY)
+                style.top = top + 'px';
+                style.left = left + 'px';
+                style.lineHeight = rectHeight + 'px';
+                style.color = `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`
+                document.body.appendChild(rect)
+                rect.onclick = () => {
+                  document.body.removeChild(rect);
+                }
+                setTimeout(() => {
+                  document.body.removeChild(rect);
+                }, 48)
+              }
+            }
+          }
         }
-      }
       } else {
         document.body.onclick = e => {
-        if(e.target==document.getElementById('bt_start').children[0]){        
-          flag=true;
-        }
-        // console.log(e)
-        const canvas=document.getElementsByTagName('canvas')[0];
-        if((flag==true||resize)&&e.target==canvas){
-          const rect = document.createElement('div');
-          const top =Math.floor(e.clientY/rectHeight)*rectHeight;
-          const left = Math.floor(e.clientX/rectWith)*rectWith;
-          rect.className='myTest';
-          rect.innerHTML=letterArr[random(0,letterArr.length)]
-          const style = rect.style;
-          style.width=rectWith+'px';
-          style.height=0+'px';
-          style.top=top+'px';
-          style.left=left+'px';
-          style.lineHeight=rectHeight+'px';
-          style.color=`rgb(${random(0,255)},${random(0,255)},${random(0,255)})`
-          document.body.appendChild(rect)
-          rect.onclick=()=>{
-           document.body.removeChild(rect);
-            canvas.click()
+          if (e.target == document.getElementById('bt_start').children[0]) {
+            flag = true;
           }
-          setTimeout(()=>{
-            document.body.removeChild(rect);
-          },48)
+          // console.log(e)
+          const canvas = document.getElementsByTagName('canvas')[0];
+          if ((flag == true || resize) && e.target == canvas) {
+            const rect = document.createElement('div');
+            const top = Math.floor(e.clientY / rectHeight) * rectHeight;
+            const left = Math.floor(e.clientX / rectWith) * rectWith;
+            rect.className = 'myTest';
+            rect.innerHTML = letterArr[random(0, letterArr.length)]
+            const style = rect.style;
+            style.width = rectWith + 'px';
+            style.height = 0 + 'px';
+            style.top = top + 'px';
+            style.left = left + 'px';
+            style.lineHeight = rectHeight + 'px';
+            style.color = `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`
+            document.body.appendChild(rect)
+            rect.onclick = () => {
+              document.body.removeChild(rect);
+              canvas.click()
+            }
+            setTimeout(() => {
+              document.body.removeChild(rect);
+            }, 48)
+
+          }
 
         }
-
       }
-      }
-      
 
-      
+
+
     }
     fn()
     window.onresize = function () {
